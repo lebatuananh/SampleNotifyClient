@@ -1,0 +1,221 @@
+ 
+<!-- Container-fluid starts -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-3 col-lg-6 col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="stat-widget-dashboard">
+                        <div class="media">
+                            <img class="mr-3" src="assets/images/dashboard-icons/document.png" alt="Generic placeholder image">
+                            <div class="media-body text-right">
+                                <h4 class="mt-0 counter font-primary" countUp endVal="256">0</h4>
+                                <span>CHỜ DUYỆT TẠM ỨNG</span>
+                            </div>
+                        </div>
+                        <div class="dashboard-chart-container">
+                            <x-chartist [data]="WidgetlineChart1.data" [type]="WidgetlineChart1.type" [options]="WidgetlineChart1.options">
+                            </x-chartist>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="stat-widget-dashboard">
+                        <div class="media">
+                            <img class="mr-3" src="assets/images/dashboard-icons/operator.png" alt="Generic placeholder image">
+                            <div class="media-body text-right">
+                                <h4 class="mt-0 counter font-secondary" countUp endVal="346">0</h4>
+                                <span>CHỜ DUYỆT TẤT TOÁN</span>
+                            </div>
+                        </div>
+                        <div class="dashboard-chart-container">
+                            <x-chartist [data]="WidgetlineChart2.data" [type]="WidgetlineChart2.type" [options]="WidgetlineChart2.options">
+                            </x-chartist>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="stat-widget-dashboard">
+                        <div class="media">
+                            <img class="mr-3" src="assets/images/dashboard-icons/chat.png" alt="Generic placeholder image">
+                            <div class="media-body text-right">
+                                <h4 class="mt-0 counter font-success" countUp endVal="260">0</h4>
+                                <span>CHỜ DUYỆT HUỶ ĐƠN</span>
+                            </div>
+                        </div>
+                        <div class="dashboard-chart-container">
+                            <x-chartist [data]="WidgetlineChart3.data" [type]="WidgetlineChart3.type" [options]="WidgetlineChart3.options">
+                            </x-chartist>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="stat-widget-dashboard">
+                        <div class="media">
+                            <img class="mr-3" src="assets/images/dashboard-icons/like.png" alt="Generic placeholder image">
+                            <div class="media-body text-right">
+                                <h4 class="mt-0 counter font-info" countUp endVal="956">0</h4>
+                                <span>GIAO HÀNG THU COD</span>
+                            </div>
+                        </div>
+                        <div class="dashboard-chart-container">
+                            <x-chartist [data]="WidgetlineChart4.data" [type]="WidgetlineChart4.type" [options]="WidgetlineChart4.options">
+                            </x-chartist>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-xl-4 col-lg-6 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>THỐNG KÊ NẠP TIỀN THEO THÁNG</h5>
+                </div>
+                <div class="card-body">
+                    <canvas baseChart class="chart" [legend]="monthlyChartLegend" [data]="monthlyChartData" [labels]="monthlyChartLabels" [options]="monthlyChartOptions" [chartType]="monthlyChartType" [colors]="monthlyChartColors" height="300"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-6 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5>THỐNG KÊ THU TIỀN THEO THÁNG</h5>
+                </div>
+                <div class="card-body">
+                    <canvas baseChart class="chart" [legend]="dailyChartLegend" [data]="dailyChartData" [labels]="dailyChartLabels" [options]="dailyChartOptions" [chartType]="dailyChartType" [colors]="dailyChartColors" height="300"></canvas>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-xl-4 col-lg-12">
+            <div class="card default-widget-count">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="mr-3 left b-primary">
+                            <div class="bg bg-primary"></div>
+                            <i class="icofont icofont-money"></i>
+                        </div>
+                        <div class="media-body align-self-center">
+                            <h4 class="mt-0 counter" countUp endVal="256">0</h4>
+                            <span>CHỜ NẠP TIỀN </span>
+                            <i class="icofont icofont-money icon-bg"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card default-widget-count">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="mr-3 left b-secondary">
+                            <div class="bg bg-secondary"></div>
+                            <i class="icofont icofont-money-bag"></i>
+                        </div>
+                        <div class="media-body align-self-center">
+                            <h4 class="mt-0 counter" countUp endVal="953">0</h4>
+                            <span>CHỜ RÚT TIỀN </span>
+                            <i class="icofont icofont-money-bag icon-bg"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card default-widget-count">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="mr-3 left b-success">
+                            <div class="bg bg-success"></div>
+                            <i class="icofont icofont-pay"></i>
+                        </div>
+                        <div class="media-body align-self-center">
+                            <h4 class="mt-0 counter" countUp endVal="103">0</h4>
+                            <span>CHỜ THANH TOÁN  </span>
+                            <i class="icofont icofont-pay icon-bg"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-xl-8 col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>THỐNG KÊ THANH TOÁN ĐƠN HÀNG</h5> 
+                </div>
+                <div class="card-body">
+                    <div class="dashboard-chart-container">
+                        <x-chartist [data]="salesChart.data" [type]="salesChart.type" [options]="salesChart.options">
+                        </x-chartist>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-12">
+            <div class="card default-widget-count">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="mr-3 left b-primary">
+                            <div class="bg bg-primary"></div>
+                            <i class="icofont icofont-safety"></i>
+                        </div>
+                        <div class="media-body align-self-center">
+                            <h4 class="mt-0 counter" countUp endVal="256">0</h4>
+                            <span>KỸ QUỸ </span>
+                            <i class="	
+                            icofont icofont-safety icon-bg"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card default-widget-count">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="mr-3 left b-secondary">
+                            <div class="bg bg-secondary"></div>
+                            <i class="icon-reload"></i>
+                        </div>
+                        <div class="media-body align-self-center">
+                            <h4 class="mt-0 counter" countUp endVal="953">0</h4>
+                            <span>CHỜ GHI SỔ KẾ TOÁN </span>
+                            <i class="icon-reload icon-bg"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card default-widget-count">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="mr-3 left b-success">
+                            <div class="bg bg-success"></div>
+                            <i class="icofont icofont-users-social"></i>
+                        </div>
+                        <div class="media-body align-self-center">
+                            <h4 class="mt-0 counter" countUp endVal="103">0</h4>
+                            <span>KHÁCH HÀNG KÍCH HOẠT </span>
+                            <i class="icofont icofont-users-social icon-bg"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        
+      
+         
+    </div>
+</div>
+<!-- Container-fluid Ends -->

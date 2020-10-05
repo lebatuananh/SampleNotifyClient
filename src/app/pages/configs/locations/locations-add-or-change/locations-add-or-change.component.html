@@ -1,0 +1,166 @@
+<div *blockUI="'blockUIAddOrChangeWarehouse'">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-lg-12">
+                <h5 class="d-inline" *ngIf="locationsModel.id == 0 || locationsModel.id == null">
+                  Thêm thông tin vị trí</h5>
+                <h5 class="d-inline" *ngIf="locationsModel.id > 0">Chỉnh sửa thông tin vị trí</h5>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="card-body">
+                  <div>
+                    <div class="form theme-form">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="col p-b-5">
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  Loại: Tỉnh - Thành phố - huyện - thị xã
+                                </label>
+                                <div class="col-sm-8">
+                                  <ng-select [items]="listType" [virtualScroll]="true" name="type" bindLabel="name"
+                                    bindValue="type" [(ngModel)]="locationsModel.type" placeholder="Type...">
+                                  </ng-select>
+                                </div>
+                              </div>
+                              <div *ngIf="locationsModel.type == 'PROVINCE'" class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  Code
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="code"
+                                      [(ngModel)]="locationsModel.code">
+                                  </div>
+                                </div>
+                              </div>
+                              <div *ngIf="locationsModel.type != 'PROVINCE'" style="display: none;"
+                                class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  Code
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="code"
+                                      [(ngModel)]="locationsModel.code">
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div *ngIf="locationsModel.type == 'PROVINCE'" style="display: none;"
+                                class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  Parent
+                                </label>
+                                <div class="col-sm-8">
+                                  <ng-select [items]="locationsParentModel" [virtualScroll]="true" name="parent"
+                                    bindLabel="name" bindValue="id" [(ngModel)]="locationsModel.parent"
+                                    placeholder="Type...">
+                                  </ng-select>
+                                </div>
+                              </div>
+                              <div *ngIf="locationsModel.type != 'PROVINCE'" class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  Parent
+                                </label>
+                                <div class="col-sm-8">
+                                  <ng-select [items]="locationsParentModel" [virtualScroll]="true" name="parent"
+                                    bindLabel="name" bindValue="id" [(ngModel)]="locationsModel.parent"
+                                    placeholder="Type...">
+                                  </ng-select>
+                                </div>
+                              </div>
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  Name
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="name"
+                                      [(ngModel)]="locationsModel.name">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  VT Key
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="vtkey"
+                                      [(ngModel)]="locationsModel.vtkey">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  EMS Key
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="emskey"
+                                      [(ngModel)]="locationsModel.emskey">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  VNP Key
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="vnpkey"
+                                      [(ngModel)]="locationsModel.vnpkey">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  PCS Key
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="vnpkey"
+                                      [(ngModel)]="locationsModel.pcskey">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <button *ngIf="locationsModel.id == 0 || locationsModel.id == null"
+                                      class="btn btn-success btn-sm float-right" type="button"
+                                      (click)="onAdd(locationsModel)" ngbTooltip="Thêm mới">
+                                      <i class="fa fa-floppy-o"></i>
+                                    </button>
+                                    <button *ngIf="locationsModel.id > 0" class="btn btn-success btn-sm float-right"
+                                      type="button" ngbTooltip="Lưu" (click)="onUpdate(locationsModel)">
+                                      <i class="fa fa-floppy-o"></i>
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

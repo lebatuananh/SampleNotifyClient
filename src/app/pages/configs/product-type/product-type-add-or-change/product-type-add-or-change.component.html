@@ -1,0 +1,117 @@
+<div *blockUI="'blockUIAddOrChangeWarehouse'">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-lg-12">
+                <h5 class="d-inline" *ngIf="productTypeModel.id == 0 || productTypeModel.id == null">
+                  Thêm thông tin loại sản phẩm</h5>
+                <h5 class="d-inline" *ngIf="productTypeModel.id > 0">Chỉnh sửa thông tin loại sản phẩm</h5>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="card-body">
+                  <div>
+                    <div class="form theme-form">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="col p-b-5">
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  Tên tiếng Việt
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control " [(ngModel)]="productTypeModel.title">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  Tên tiếng Anh
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" [(ngModel)]="productTypeModel.name">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  Mô tả
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control " [(ngModel)]="productTypeModel.description">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  Nhóm
+                                </label>
+                                <div class="col-sm-8">
+                                  <ng-select [items]="productTypeGroupModel" [virtualScroll]="true" bindLabel="title"
+                                    bindValue="title" [(ngModel)]="productTypeModel.groupId" placeholder="Nhóm..."
+                                    class="custom-select2" name="groupId">
+                                  </ng-select>
+                                </div>
+                              </div>
+                              <!-- <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  Nhóm
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" [(ngModel)]="productTypeModel.groupId">
+                                  </div>
+                                </div>
+                              </div> -->
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  Giá
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control "
+                                      [(ngModel)]="productTypeModel.priceStandard">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <button *ngIf="productTypeModel.id == 0 || productTypeModel.id == null"
+                                      class="btn btn-success btn-sm float-right" type="button"
+                                      (click)="onAdd(productTypeModel)" ngbTooltip="Thêm mới">
+                                      <i class="fa fa-floppy-o"></i>
+                                    </button>
+                                    <button *ngIf="productTypeModel.id > 0" class="btn btn-success btn-sm float-right"
+                                      type="button" ngbTooltip="Lưu" (click)="onUpdate(productTypeModel)">
+                                      <i class="fa fa-floppy-o"></i>
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

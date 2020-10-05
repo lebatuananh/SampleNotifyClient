@@ -1,0 +1,144 @@
+<!-- Container-fluid starts -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xl-3 col-lg-6 col-sm-6">
+      <div class="card default-widget-count">
+        <div class="card-body">
+          <div class="media">
+            <div class="mr-3 left b-success">
+              <div class="bg bg-success"></div>
+              <i class="icofont icofont-pay"></i>
+            </div>
+            <div class="media-body align-self-center">
+              <h4 class="mt-0 counter" countUp endVal="256">{{totalCountProcessing}}</h4>
+              <span>ĐƠN MH CHỜ XỬ LÝ</span>
+              <i class="icofont icofont-pay icon-bg"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-sm-6">
+      <div class="card default-widget-count">
+        <div class="card-body">
+          <div class="media">
+            <div class="mr-3 left b-success">
+              <div class="bg bg-success"></div>
+              <i class="fa fa-money"></i>
+            </div>
+            <div class="media-body align-self-center">
+              <h4 class="mt-0 counter" countUp endVal="969">{{totalCountAdvance}}</h4>
+              <span>ĐƠN MH CHỜ TẠM ỨNG</span>
+              <i class="icofont icofont-pay icon-bg"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-sm-6">
+      <div class="card default-widget-count">
+        <div class="card-body">
+          <div class="media">
+            <div class="mr-3 left b-primary">
+              <div class="bg bg-primary"></div>
+              <i class="icofont icofont-money"></i>
+            </div>
+            <div class="media-body align-self-center">
+              <h4 class="mt-0 counter" countUp endVal="468">{{totalCountWaitingPayment}}</h4>
+              <span>ĐƠN MH CHỜ BÁO GIÁ</span>
+              <i class="icofont icofont-money icon-bg"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-sm-6">
+      <div class="card default-widget-count">
+        <div class="card-body">
+          <div class="media">
+            <div class="mr-3 left b-primary">
+              <div class="bg bg-primary"></div>
+              <i class="icofont icofont-money"></i>
+            </div>
+            <div class="media-body align-self-center">
+              <h4 class="mt-0 counter" countUp endVal="690">{{totalCountWaitingPaymentTrasport}}</h4>
+              <span>ĐƠN VC CHỜ BÁO GIÁ</span>
+              <i class="icofont icofont-money icon-bg"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-lg-6 col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h5>ĐƠN HÀNG MUA HỘ</h5>
+        </div>
+        <div class="card-body">
+          <ngx-charts-bar-vertical [view]="b_view" [results]="b_single" [xAxis]="b_showXAxis" [yAxis]="b_showYAxis"
+            [showYAxisLabel]="b_showYAxisLabel" [yAxisLabel]="b_yAxisLabel">
+          </ngx-charts-bar-vertical>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-6 col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h5>ĐƠN HÀNG VẬN CHUYỂN</h5>
+        </div>
+        <div class="card-body">
+          <ngx-charts-bar-vertical [view]="s_view" [results]="s_single" [xAxis]="s_showXAxis" [yAxis]="s_showYAxis"
+            [showYAxisLabel]="s_showYAxisLabel" [yAxisLabel]="s_yAxisLabel">
+          </ngx-charts-bar-vertical>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-4 col-lg-12">
+      <div class="card default-widget-count">
+        <div class="card-body">
+          <ngx-charts-advanced-pie-chart [view]="ap_view" [label]="ap_label" [results]="ap_single">
+          </ngx-charts-advanced-pie-chart>
+        </div>
+      </div>
+      <div class="card default-widget-count">
+        <div class="card-body">
+          <ngx-charts-advanced-pie-chart [view]="wf_view" [label]="wf_label" [results]="wf_single">
+          </ngx-charts-advanced-pie-chart>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-8 col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <h5>THỐNG KÊ BIẾN ĐỘNG</h5>
+        </div>
+        <div class="card-body">
+          <div class="dashboard-chart-container">
+            <ngx-charts-line-chart [view]="f_view" [showXAxisLabel]="f_showXAxisLabel"
+              [showYAxisLabel]="f_showYAxisLabel" [xAxis]="f_xAxis" [yAxis]="f_yAxis" [xAxisLabel]="f_xAxisLabel"
+              [yAxisLabel]="f_yAxisLabel" [timeline]="f_timeline" [results]="f_multi">
+            </ngx-charts-line-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-12">
+      <div class="card default-widget-count">
+        <div class="card-body">
+          <ngx-charts-advanced-pie-chart [view]="wq_view" [label]="wq_label" [results]="wq_single">
+          </ngx-charts-advanced-pie-chart>
+        </div>
+      </div>
+      <div class="card default-widget-count">
+        <div class="card-body">
+          <ngx-charts-pie-grid [view]="r_view" [label]="r_label" [results]="r_single">
+          </ngx-charts-pie-grid>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Container-fluid Ends -->

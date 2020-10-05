@@ -1,0 +1,113 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h5 class="d-inline">Ngôn ngữ</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="search-box" style="margin: 10px;">
+
+                    <div class="card-body">
+                        <div id="collapseSearch">
+                            <!-- BEGIN Form Filter Order -->
+                            <form>
+                                <div class="col-md-12 form-inline float-left">
+                                    <div class="col-md-6 no-padding">
+                                        <div class="form-group">
+                                            <div class="col-md-3 no-padding">
+                                                <label class="col-form-label float-left">
+                                                    Mã ngôn ngữ
+                                                </label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <ng-select [items]="listCodeCoutry" [virtualScroll]="true" name="code"
+                                                    (change)="onGetAll()" bindLabel="name" bindValue="value"
+                                                    [(ngModel)]="languagesListRequest.id" placeholder="Mã ngôn ngữ...">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 no-padding">
+                                        <div class="form-group">
+                                            <div class="col-md-3 no-padding">
+                                                <label class="col-form-label float-left">
+                                                    Tên ngôn ngữ
+                                                </label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <ng-select [items]="listNameCoutry" [virtualScroll]="true" name="name"
+                                                    (change)="onGetAll()" bindLabel="name" bindValue="value"
+                                                    [(ngModel)]="languagesListRequest.title" placeholder="Tên ngôn ngữ...">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- END Form Filter leaguages -->
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!-- Table list warehouse -->
+                    <div class="row mb-2">
+                        <div class="col-lg-12">
+                            <table class="table table-borded">
+                                <thead class="">
+                                    <tr class="text-center height-title">
+                                        <th class="w10p text-center">Mã quốc gia</th>
+                                        <th class="w10p text-center">Tên quốc gia</th>
+                                        <th class="w10p text-center"></th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-center">
+                                    <tr>
+                                        <td colspan="2"></td>
+                                        <td class="w5p text-center">
+                                            <button class="btn btn-success m-r-5 font-btn"
+                                                (click)="onOpenModalAddLanguages()">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr *ngFor="let item of languagesModel |
+                                        paginate:{
+                                                    id:'pagingControl',
+                                                    itemsPerPage: pageSize,
+                                                    currentPage: pageIndex,
+                                                    totalItems: totalRow
+                                                }; let i=index;">
+                                        <td class="text-center">
+                                            <span _ngcontent-c7="" class="badge badge-primary" ngbTooltip="Mã ngôn ngữ"
+                                                ng-reflect-ngb-tooltip="Mã ngôn ngữ">{{item.id}}</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span _ngcontent-c7="" class="badge badge-success" ngbTooltip="Tên ngôn ngữ"
+                                                ng-reflect-ngb-tooltip="Tên ngôn ngữ">{{item.title}}</span>
+                                        </td>
+                                        <td class="w5p text-center">
+                                            <button class="btn btn-primary btn-sm m-r-5"
+                                                (click)="onOpenModalUpdateLanguages(item)">
+                                                <i class="fa fa-edit font-btn"></i>
+                                            </button>
+                                            <button class="btn btn-danger btn-sm" (click)="onDelete(item)">
+                                                <i class="fa fa-trash-o font-btn"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <pagination-controls maxSize="9" responsive="true" autoHide="true" previousLabel="Trang trước"
+                                nextLabel="Trang tiếp" id="pagingControl" (pageChange)="pageChanged($event)">
+                            </pagination-controls>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

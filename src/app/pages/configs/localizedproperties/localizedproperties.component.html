@@ -1,0 +1,147 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h5 class="d-inline">Tỉnh thành</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="search-box" style="margin: 10px;">
+
+                    <div class="card-body">
+                        <div id="collapseSearch">
+                            <!-- BEGIN Form Filter Order -->
+                            <form>
+                                <div class="col-md-12 form-inline float-left">
+                                    <div class="col-md-6 no-padding">
+                                        <div class="form-group">
+                                            <div class="col-md-3 no-padding">
+                                                <label class="col-form-label float-left">
+                                                    Ngôn ngữ
+                                                </label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <ng-select [items]="languagesModel" [virtualScroll]="true"
+                                                    name="languageId" (change)="onGetAll()" bindLabel="title"
+                                                    bindValue="id"
+                                                    [(ngModel)]="localizedpropertiesListRequest.languageId"
+                                                    placeholder="Ngôn ngữ...">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 no-padding">
+                                        <div class="form-group">
+                                            <div class="col-md-3 no-padding">
+                                                <label class="col-form-label float-left">
+                                                    Locale Key
+                                                </label>
+                                            </div>
+                                            <div class="col-md-9 input-group">
+                                                <input type="text" class="form-control" name="localeKey"
+                                                    (change)="onGetAll()"
+                                                    [(ngModel)]="localizedpropertiesListRequest.localeKey"
+                                                    placeholder="Locale Key">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 form-inline float-left">
+                                    <div class="col-md-6 no-padding">
+                                        <div class="form-group">
+                                            <div class="col-md-3 no-padding">
+                                                <label class="col-form-label float-left">
+                                                    Locale Group
+                                                </label>
+                                            </div>
+                                            <div class="col-md-9 input-group">
+                                                <input type="text" class="form-control" name="localeGroup"
+                                                    (change)="onGetAll()"
+                                                    [(ngModel)]="localizedpropertiesListRequest.localeGroup"
+                                                    placeholder="Locale Group">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- END Form Filter Order -->
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!-- Table list warehouse -->
+                    <div class="row mb-2">
+                        <div class="col-lg-12">
+                            <table class="table table-borded">
+                                <thead class="">
+                                    <tr class="text-center height-title">
+                                        <th class="w10p text-center">Ngôn ngữ</th>
+                                        <th class="w10p text-center">EntityId</th>
+                                        <th class="w10p text-center">Locale Key</th>
+                                        <th class="w10p text-center">Locale Group</th>
+                                        <th class="w10p text-center">Locale Value</th>
+                                        <th class="w10p text-center"></th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-center">
+                                    <tr>
+                                        <td colspan="5"></td>
+                                        <td>
+                                            <button class="btn btn-success m-r-5"
+                                                (click)="onOpenModalAddLocalizedproperties()">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <ng-container *ngFor="let item of localizedpropertiesModel | paginate: {
+                                                                        id:'pagingControl',
+                                                                        itemsPerPage: pageSize,
+                                                                        currentPage: pageIndex,
+                                                                        totalItems: totalRow
+                                                                        };let i = index">
+                                        <tr class="text-center">
+                                            <td class="text-center">
+                                                <span _ngcontent-c7="" class="badge badge-primary"
+                                                    ngbTooltip="languageId"
+                                                    ng-reflect-ngb-tooltip="languageId">{{item.languageId}}</span>
+                                            </td>
+                                            <td class="text-center">
+                                                <span _ngcontent-c7="" class="badge badge-info" ngbTooltip="entityId"
+                                                    ng-reflect-ngb-tooltip="entityId">{{item.entityId}}</span>
+                                            </td>
+                                            <td class="text-center">
+                                                {{item.localeKey}}
+                                            </td>
+                                            <td class="text-center">
+                                                {{item.localeGroup}}
+                                            </td>
+                                            <td class="text-center">
+                                                {{item.localeValue}}
+                                            </td>
+                                            <td class="w5p text-center">
+                                                <button class="btn btn-primary btn-sm m-r-5"
+                                                    (click)="onOpenModalUpdateLocalizedproperties(item)">
+                                                    <i class="fa fa-edit font-btn"></i>
+                                                </button>
+                                                <button class="btn btn-danger btn-sm" (click)="onDelete(item)">
+                                                    <i class="fa fa-trash-o font-btn"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </ng-container>
+                                </tbody>
+                            </table>
+                            <pagination-controls style="text-align: right;" maxSize="9" responsive="true"
+                                autoHide="true" previousLabel="Trang tiếp" nextLabel="Trang tiếp" id="pagingControl"
+                                (pageChange)="pageChanged($event)">
+                            </pagination-controls>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

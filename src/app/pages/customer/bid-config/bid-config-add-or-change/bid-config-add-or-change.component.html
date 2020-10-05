@@ -1,0 +1,265 @@
+<div *blockUI="'blockUIAddOrChangeWarehouse'">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-lg-12">
+                <h5 class="d-inline" *ngIf="bidConfigModel.id == 0 || bidConfigModel.id == null">
+                  Thêm thông tin nick đấu</h5>
+                <h5 class="d-inline" *ngIf="bidConfigModel.id > 0">Update thông tin nick đấu</h5>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-12" style="padding: 0px;">
+                <div class="card-body">
+                  <form class="form theme-form" #formUpdate="ngForm">
+                    <ngb-tabset>
+                      <ngb-tab>
+                        <ng-template ngbTabTitle>
+                          Thông tin cơ bản
+                        </ng-template>
+                        <ng-template ngbTabContent>
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="form-group row ">
+                                  <label class="col-sm-4 col-form-label float-right-custom">
+                                    Người mua (*)
+                                  </label>
+                                  <div class="col-sm-8">
+                                    <ng-select #Buyer="ngModel" [items]="supplierList" [virtualScroll]="true"
+                                      bindLabel="name" bindValue="accountId" [(ngModel)]="bidConfigModel.buyer"
+                                      placeholder="Người mua..." class="custom-select2" name="buyer"
+                                      [ngClass]="{ 'is-invalid': Buyer.invalid && (Buyer.dirty || Buyer.touched) }"
+                                      required>
+                                    </ng-select>
+                                    <div *ngIf="Buyer.invalid && (Buyer.dirty || Buyer.touched)" class="feedback">
+                                      <div *ngIf="Buyer.errors.required" class="font11">
+                                        Vui lòng chọn người mua.
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="form-group row ">
+                                  <label class="col-sm-4 col-form-label float-right-custom">
+                                    Nick đấu (*)
+                                  </label>
+                                  <div class="col-sm-8">
+                                    <div class="input-group">
+                                      <input #Username="ngModel" type="text" class="form-control " name="username"
+                                        [(ngModel)]="bidConfigModel.username"
+                                        [ngClass]="{ 'is-invalid': Username.invalid && (Username.dirty || Username.touched) }"
+                                        required>
+                                    </div>
+                                    <div *ngIf="Username.invalid && (Username.dirty || Username.touched)"
+                                      class="feedback">
+                                      <div *ngIf="Username.errors.required" class="font11">
+                                        Hãy chọn nick đấu.
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="form-group row ">
+                                  <label class="col-sm-4 col-form-label float-right-custom">
+                                    Alias (*)
+                                  </label>
+                                  <div class="col-sm-8">
+                                    <div class="input-group"></div>
+                                    <input type="text" class="form-control" name="alias"
+                                      [(ngModel)]="bidConfigModel.alias" #Alias="ngModel"
+                                      [ngClass]="{ 'is-invalid': Alias.invalid && (Alias.dirty || Alias.touched) }"
+                                      required>
+                                    <div *ngIf="Alias.invalid && (Alias.dirty || Alias.touched)" class="feedback">
+                                      <div *ngIf="Alias.errors.required" class="font11">
+                                        Alias không được để trống.
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="form-group row ">
+                                  <label class="col-sm-4 col-form-label float-right-custom">
+                                    Trạng thái hoạt động (*)
+                                  </label>
+                                  <div class="col-sm-8">
+                                    <div class="checkbox" *ngIf="isCheckedStatus"><input type="checkbox" name="statuss"
+                                        [(ngModel)]="bidConfigModel.status" checked id="checkbox-status" /><label
+                                        for="checkbox-status"></label>
+                                    </div>
+                                    <div class="checkbox" *ngIf="!isCheckedStatus"><input type="checkbox" name="statuss"
+                                        [(ngModel)]="bidConfigModel.status" id="checkbox-status" /><label
+                                        for="checkbox-status"></label>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="form-group row ">
+                                  <label class="col-sm-4 col-form-label float-right-custom">
+                                    Cho phép đấu giá
+                                  </label>
+                                  <div class="col-sm-8">
+                                    <div class="checkbox" *ngIf="isCkeckedIsAllowBid"><input type="checkbox"
+                                        name="isAllowBids" [(ngModel)]="bidConfigModel.isAllowBid" checked
+                                        id="checkbox-isAllowBid" /><label for="checkbox-isAllowBid"></label>
+                                    </div>
+                                    <div class="checkbox" *ngIf="!isCkeckedIsAllowBid"><input type="checkbox"
+                                        name="isAllowBids" [(ngModel)]="bidConfigModel.isAllowBid"
+                                        id="checkbox-isAllowBid" /><label for="checkbox-isAllowBid"></label>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="form-group row ">
+                                  <label class="col-sm-4 col-form-label float-right-custom">
+                                    Ghi chú
+                                  </label>
+                                  <div class="col-sm-8">
+                                    <div class="input-group">
+                                      <textarea class="form-control " [(ngModel)]="bidConfigModel.note"
+                                        name="note"></textarea>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </ng-template>
+                      </ngb-tab>
+                      <ngb-tab>
+                        <ng-template ngbTabTitle>
+                          Cấu hình hệ thống
+                        </ng-template>
+                        <ng-template ngbTabContent>
+                          <div class="modal-body">
+                            <div class="col-sm-12">
+                              <fieldset>
+                                <legend>Tài khoản</legend>
+                                <div class="form-group row">
+                                  <label class="col-sm-6 col-form-label">Tài khoản</label>
+                                  <div class="col-sm-6">
+                                    <input type="text" class="form-control" [(ngModel)]="bidConfigModel.username"
+                                      disabled name="username" style="cursor: not-allowed;" />
+                                  </div>
+                                </div>
+                                <div class="form-group row">
+                                  <label class="col-sm-6 col-form-label">Mật khẩu (*)</label>
+                                  <div class="col-sm-6">
+                                    <div class="input-group">
+                                      <input #Password="ngModel" [type]="password" [(ngModel)]="bidConfigModel.password"
+                                        name="password" class="form-control"
+                                        [ngClass]="{ 'is-invalid': Password.invalid && (Password.dirty || Password.touched) }"
+                                        required />
+                                      <div class="input-group-append" style="border: none;cursor: pointer; border-top-right-radius: 4px;
+                                        border-bottom-right-radius: 4px;" (click)="showPassword()">
+                                        <span *ngIf="!isPasswordShow" class="input-group-text" id="basic-addon1"> <i
+                                            class="fa fa-eye-slash" aria-hidden="true"></i></span>
+                                        <span *ngIf="isPasswordShow" class="input-group-text" id="basic-addon1"> <i
+                                            class="fa fa-eye" aria-hidden="true"></i></span>
+                                      </div>
+                                      <div *ngIf="Password.invalid && (Password.dirty || Password.touched)"
+                                        class="feedback invalid-feedback">
+                                        <div *ngIf="Password.errors.required" class="font11">
+                                          Mật khẩu không được để trống.
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class=" form-group row">
+                                  <label class="col-sm-6 col-form-label">Alias</label>
+                                  <div class="col-sm-6">
+                                    <input type="text" class="form-control" [(ngModel)]="bidConfigModel.alias" disabled
+                                      name="alias" style="cursor: not-allowed;" />
+                                  </div>
+                                </div>
+                              </fieldset>
+                            </div>
+                            <div class="col-sm-12">
+                              <fieldset>
+                                <legend>Cấu hình</legend>
+                                <div class="form-group row">
+                                  <label class="col-sm-6 col-form-label">Nhóm (*)</label>
+                                  <div class="col-sm-6">
+                                    <ng-select #GroupKey="ngModel" [items]="listServiceGroup" [virtualScroll]="true"
+                                      bindLabel="id" bindValue="id" [(ngModel)]="bidConfigModel.groupKey"
+                                      name="groupKey" placeholder="Nhóm..." class="custom-select2"
+                                      [ngClass]="{ 'is-invalid': GroupKey.invalid && (GroupKey.dirty || GroupKey.touched) }"
+                                      required>
+                                    </ng-select>
+                                    <div *ngIf="GroupKey.invalid && (GroupKey.dirty || GroupKey.touched)"
+                                      class="feedback">
+                                      <div *ngIf="GroupKey.errors.required" class="font11">
+                                        Nhóm không được để trống.
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </fieldset>
+                            </div>
+                            <div class="col-sm-12">
+                              <fieldset>
+                                <legend>Proxy</legend>
+                                <div class="form-group row">
+                                  <label class="col-sm-6 col-form-label">Proxy Host</label>
+                                  <div class="col-sm-6">
+                                    <input type="text" [(ngModel)]="bidConfigModel.proxyHost" class="form-control"
+                                      name="proxyHost" />
+                                  </div>
+                                </div>
+                                <div class="form-group row">
+                                  <label class="col-sm-6 col-form-label">Proxy Port</label>
+                                  <div class="col-sm-6">
+                                    <input type="number" [(ngModel)]="bidConfigModel.proxyPort" class="form-control"
+                                      name="proxyPort" />
+                                  </div>
+                                </div>
+                                <div class="form-group row">
+                                  <label class="col-sm-6 col-form-label">Proxy UserName</label>
+                                  <div class="col-sm-6">
+                                    <input type="text" [(ngModel)]="bidConfigModel.proxyUserName" class="form-control"
+                                      name="proxyUserName" />
+                                  </div>
+                                </div>
+                                <div class="form-group row">
+                                  <label class="col-sm-6 col-form-label">Proxy Password</label>
+                                  <div class="col-sm-6">
+                                    <div class="input-group">
+                                      <input [type]="proxyPassword" [(ngModel)]="bidConfigModel.proxyPassword"
+                                        class="form-control" name="proxyPassword" />
+                                      <div class="input-group-append" style="border:none;cursor: pointer;"
+                                        (click)="showProxyPassword()">
+                                        <span *ngIf="!isProxyPasswordShow" class="input-group-text" id="basic-addon2">
+                                          <i class="fa fa-eye-slash" aria-hidden="true"></i></span>
+                                        <span *ngIf="isProxyPasswordShow" class="input-group-text" id="basic-addon2"> <i
+                                            class="fa fa-eye" aria-hidden="true"></i></span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </fieldset>
+                            </div>
+                          </div>
+                        </ng-template>
+                      </ngb-tab>
+                    </ngb-tabset>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button *ngIf="bidConfigModel.id == 0 || bidConfigModel.id == null" class="btn btn-success btn-sm float-right"
+        style="width: 34px;height: 30px;" type="button" (click)="onAdd(bidConfigModel)" ngbTooltip="Thêm"
+        [disabled]="formUpdate.invalid">
+        <i style="font-size: 14px !important;" class="fa fa-floppy-o"></i>
+      </button>
+      <button *ngIf="bidConfigModel.id > 0" class="btn btn-success btn-sm float-right" style="width: 34px;height: 30px;"
+        type="button" ngbTooltip="Lưu" (click)="onUpdate(bidConfigModel)">
+        <i style="font-size: 14px !important;" class="fa fa-floppy-o"></i>
+      </button>
+    </div>
+  </div>

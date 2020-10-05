@@ -1,0 +1,140 @@
+<div *blockUI="'blockUIAddOrChangeWarehouse'">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-lg-12">
+                <h5 class="d-inline" *ngIf="ddImportModel.id == null">
+                  Thêm mới</h5>
+                <h5 class="d-inline" *ngIf="ddImportModel.id != null">Chỉnh sửa</h5>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="card-body">
+                  <div>
+                    <div class="form theme-form">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="col p-b-5">
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  Code
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control " [(ngModel)]="ddImportModel.id"
+                                      placeholder="Code">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  Name
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control " [(ngModel)]="ddImportModel.title"
+                                      placeholder="Name">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  Mô Tả
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Mô Tả"
+                                      [(ngModel)]="ddImportModel.description">
+                                  </div>
+                                </div>
+                              </div>
+                              <!-- <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  ord
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control " [(ngModel)]="ddImportModel.ord"
+                                      placeholder="ord">
+                                  </div>
+                                </div>
+                              </div> -->
+                              <!-- <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  helpLink
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="helpLink"
+                                      [(ngModel)]="ddImportModel.helpLink">
+                                  </div>
+                                </div>
+                              </div> -->
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  Tiền tệ
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control " [(ngModel)]="ddImportModel.currency"
+                                      placeholder="currency">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  DD Type
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="ddtype"
+                                      [(ngModel)]="ddImportModel.ddtype">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <button *ngIf="ddImportModel.id == null" class="btn btn-success btn-sm float-right"
+                                      type="button" (click)="onAdd(ddImportModel)" ngbTooltip="Thêm mới">
+                                      <i class="fa fa-floppy-o"></i>
+                                    </button>
+                                    <button *ngIf="ddImportModel.id != null" class="btn btn-success btn-sm float-right"
+                                      type="button" ngbTooltip="Lưu" (click)="onUpdate(ddImportModel)">
+                                      <i class="fa fa-floppy-o"></i>
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="card-footer">
+            <button *ngIf="WAREHOUSE.id == 0 || WAREHOUSE.id == null" class="btn btn-primary btn-sm float-right"
+              type="button" (click)="onAdd(WAREHOUSE)" ngbTooltip="{{ 'GENERAL.Save' | translate }}">
+              <i class="fa fa-floppy-o"></i>
+            </button>
+            <button *ngIf="WAREHOUSE.id > 0" class="btn btn-primary btn-sm float-right" type="button"
+              ngbTooltip="{{ 'GENERAL.Save' | translate }}" (click)="onUpdate(WAREHOUSE)">
+              <i class="fa fa-floppy-o"></i>
+            </button>
+          </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

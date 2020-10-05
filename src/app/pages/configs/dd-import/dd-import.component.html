@@ -1,0 +1,130 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h5 class="d-inline">dd import</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="search-box" style="margin: 10px;">
+
+                    <div class="card-body">
+                        <div id="collapseSearch">
+                            <!-- BEGIN Form Filter Order -->
+                            <form>
+                                <div class="col-md-12 form-inline float-left">
+                                    <div class="col-md-4 no-padding">
+                                        <div class="form-group">
+                                            <div class="col-md-3 no-padding">
+                                                <label class="col-form-label float-left">
+                                                    Mã
+                                                </label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <ng-select [items]="ddImportModel" [virtualScroll]="true" name="code"
+                                                    (change)="onGetAll()" bindLabel="id" bindValue="id"
+                                                    [(ngModel)]="ddImportListRequest.id" placeholder="Mã...">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 no-padding">
+                                        <div class="form-group">
+                                            <div class="col-md-3 no-padding">
+                                                <label class="col-form-label float-left">
+                                                    Tên
+                                                </label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <ng-select [items]="ddImportModel" [virtualScroll]="true" name="code"
+                                                    (change)="onGetAll()" bindLabel="title" bindValue="title"
+                                                    [(ngModel)]="ddImportListRequest.title" placeholder="Tên...">
+                                                </ng-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- END Form Filter Order -->
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!-- Table list warehouse -->
+                    <div class="row mb-2">
+                        <div class="col-lg-12">
+                            <table class="table table-borded">
+                                <thead class="">
+                                    <tr class="text-center height-title">
+                                        <th class="w10p text-center">Code</th>
+                                        <th class="w10p text-center">Name</th>
+                                        <th class="w10p text-center">Mô tả</th>
+                                        <th class="w10p text-center">Trạng thái</th>
+                                        <th class="w10p text-center">Tiền tệ</th>
+                                        <th class="w10p text-center">Loại dd</th>
+                                        <th class="w10p text-center"></th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-center">
+                                    <tr>
+
+                                        <td colspan="6"></td>
+                                        <td class="w5p text-center">
+                                            <button class="btn btn-success m-r-5"
+                                                (click)="onOpenModalAddDdImportModel()">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr *ngFor="let item of ddImportModel| paginate: {
+                                        id:'pagingControl',
+                                        itemsPerPage: pageSize,
+                                        currentPage: pageIndex,
+                                        totalItems: totalRow
+                                        };let i = index">
+                                        <td class="text-center">
+                                            <span _ngcontent-c7="" class="badge badge-secondary" ngbTooltip="id"
+                                                ng-reflect-ngb-tooltip="id">{{item.id}}</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <span _ngcontent-c7="" class="badge badge-primary" ngbTooltip="title"
+                                                ng-reflect-ngb-tooltip="title">{{item.title}}</span>
+                                        </td>
+                                        <td class="text-center">
+                                            {{item.description}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{item.status}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{item.currency}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{item.ddtype}}
+                                        </td>
+                                        <td class="w5p text-center">
+                                            <button class="btn btn-primary btn-sm m-r-5"
+                                                (click)="onOpenModalUpdateDdImportModel(item)">
+                                                <i class="fa fa-edit font-btn"></i>
+                                            </button>
+                                            <button class="btn btn-danger btn-sm" (click)="onDelete(item)">
+                                                <i class="fa fa-trash-o font-btn"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <pagination-controls maxSize="9" responsive="true" autoHide="true"
+                                previousLabel="Trang trước" nextLabel="Trang tiếp" id="pagingControl"
+                                (pageChange)="pageChanged($event)">
+                            </pagination-controls>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

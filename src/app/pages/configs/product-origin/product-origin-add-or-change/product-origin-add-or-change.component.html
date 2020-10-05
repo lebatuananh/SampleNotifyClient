@@ -1,0 +1,98 @@
+<div *blockUI="'blockUIAddOrChangeWarehouse'">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-lg-12">
+                <h5 class="d-inline" *ngIf="productOriginModel.id == 0 || productOriginModel.id == null">
+                  Thêm thông tin sản phẩm gốc</h5>
+                <h5 class="d-inline" *ngIf="productOriginModel.id > 0">Chỉnh sửa thông tin sản phẩm gốc</h5>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="card-body">
+                  <div>
+                    <div class="form theme-form">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="col p-b-5">
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  title
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control " [(ngModel)]="productOriginModel.title"
+                                      placeholder="title">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  name
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="name"
+                                      [(ngModel)]="productOriginModel.name">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  description
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control " [(ngModel)]="productOriginModel.description"
+                                      placeholder="description">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  order
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control " [(ngModel)]="productOriginModel.order"
+                                      placeholder="order">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <button *ngIf="productOriginModel.id == 0 || productOriginModel.id == null"
+                                      class="btn btn-success btn-sm float-right" type="button"
+                                      (click)="onAdd(productOriginModel)" ngbTooltip="Thêm mới">
+                                      <i class="fa fa-floppy-o"></i>
+                                    </button>
+                                    <button *ngIf="productOriginModel.id > 0" class="btn btn-success btn-sm float-right"
+                                      type="button" ngbTooltip="Lưu" (click)="onUpdate(productOriginModel)">
+                                      <i class="fa fa-floppy-o"></i>
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,179 @@
+<div *blockUI="'blockUIAddOrChangeWarehouse'">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-lg-12">
+                <h5 class="d-inline" *ngIf="productTypeGroupModel.id == 0 || productTypeGroupModel.id == null">
+                  Thêm thông tin nhóm sản phẩm</h5>
+                <h5 class="d-inline" *ngIf="productTypeGroupModel.id > 0">Chỉnh sửa thông tin nhóm sản phẩm</h5>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="card-body">
+                  <div>
+                    <div class="form theme-form">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="col p-b-5">
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label">
+                                  Mã nhóm sản phẩm
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="code"
+                                      [(ngModel)]="productTypeGroupModel.code">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label ">
+                                  Tên nhóm sản phẩm
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control " [(ngModel)]="productTypeGroupModel.title"
+                                      placeholder="title">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label ">
+                                  Mô tả
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control "
+                                      [(ngModel)]="productTypeGroupModel.description" placeholder="description">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label ">
+                                  Ghi chú
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control " [(ngModel)]="productTypeGroupModel.note"
+                                      placeholder="note">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label ">
+                                  Giá trọng lượng
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="priceWeight"
+                                      [(ngModel)]="productTypeGroupModel.priceWeight">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label ">
+                                  Giá Định lượng
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="priceQuantity"
+                                      [(ngModel)]="productTypeGroupModel.priceQuantity">
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col p-b-6">
+                            <div class="form-group row border-0">
+                              <label class="col-sm-4 col-form-label">
+                                Giá tiêu chuẩn
+                              </label>
+                              <div class="col-sm-8">
+                                <div class="input-group">
+                                  <input type="text" class="form-control "
+                                    [(ngModel)]="productTypeGroupModel.priceStandard" placeholder="priceStandard">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group row border-0">
+                              <label class="col-sm-4 col-form-label">
+                                Giá Japan
+                              </label>
+                              <div class="col-sm-8">
+                                <div class="input-group">
+                                  <input type="text" class="form-control " [(ngModel)]="productTypeGroupModel.priceJp"
+                                    placeholder="priceJp">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group row border-0">
+                              <label class="col-sm-4 col-form-label">
+                                Giá USA
+                              </label>
+                              <div class="col-sm-8">
+                                <div class="input-group">
+                                  <input type="text" class="form-control " [(ngModel)]="productTypeGroupModel.priceUs"
+                                    placeholder="priceUs">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group row border-0">
+                              <label class="col-sm-4 col-form-label">
+                                Giá Korean
+                              </label>
+                              <div class="col-sm-8">
+                                <div class="input-group">
+                                  <input type="text" class="form-control" placeholder="priceKr"
+                                    [(ngModel)]="productTypeGroupModel.priceKr">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group row border-0">
+                              <label class="col-sm-4 col-form-label">
+                                Giá Au
+                              </label>
+                              <div class="col-sm-8">
+                                <div class="input-group">
+                                  <input type="text" class="form-control " [(ngModel)]="productTypeGroupModel.priceAu"
+                                    placeholder="priceAu">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="form-group row border-0">
+                              <label class="col-sm-4 col-form-label">
+                              </label>
+                              <div class="col-sm-8">
+                                <div class="input-group">
+                                  <button *ngIf="productTypeGroupModel.id == 0 || productTypeGroupModel.id == null"
+                                    class="btn btn-success btn-sm float-right" type="button"
+                                    (click)="onAdd(productTypeGroupModel)" ngbTooltip="Thêm mới">
+                                    <i class="fa fa-floppy-o"></i>
+                                  </button>
+                                  <button *ngIf="productTypeGroupModel.id > 0"
+                                    class="btn btn-success btn-sm float-right" type="button" ngbTooltip="Lưu"
+                                    (click)="onUpdate(productTypeGroupModel)">
+                                    <i class="fa fa-floppy-o"></i>
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

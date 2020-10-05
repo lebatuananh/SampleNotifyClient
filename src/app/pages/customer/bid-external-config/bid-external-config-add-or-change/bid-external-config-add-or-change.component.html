@@ -1,0 +1,102 @@
+<div *blockUI="'blockUIAddOrChangeWarehouse'">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-lg-12">
+                <h5 class="d-inline" *ngIf="bidExternalConfigModel.id == 0 || bidExternalConfigModel.id == null">
+                  Thêm thông tin nick đấu</h5>
+                <h5 class="d-inline" *ngIf="bidExternalConfigModel.id > 0">Chỉnh sửa thông tin nick đấu</h5>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="card-body">
+                  <div>
+                    <div class="form theme-form">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="col p-b-5">
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  Khách hàng
+                                </label>
+                                <div class="col-sm-8">
+                                  <ng-select [items]="customerListTopModel" [virtualScroll]="true" name="accountId"
+                                    bindLabel="fullnameAndUsername" bindValue="accountId"
+                                    [(ngModel)]="bidExternalConfigModel.accountId" placeholder="Khách hàng">
+                                  </ng-select>
+                                  <!-- <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="orderType"
+                                      [(ngModel)]="bidExternalConfigModel.accountId">
+                                  </div> -->
+                                </div>
+                              </div>
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  Nick đấu
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <input type="text" class="form-control "
+                                      [(ngModel)]="bidExternalConfigModel.yauserName" placeholder="Nick đấu">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                  Trạng thái
+                                </label>
+                                <div class="col-sm-8">
+                                  <ng-select [items]="listStatus" [virtualScroll]="true" name="status" bindLabel="name"
+                                    bindValue="status" [(ngModel)]="bidExternalConfigModel.status"
+                                    placeholder="Trạng thái">
+                                  </ng-select>
+                                </div>
+                              </div>
+                              <div class="form-group row border-0">
+                                <label class="col-sm-4 col-form-label text-left">
+                                </label>
+                                <div class="col-sm-8">
+                                  <div class="input-group">
+                                    <button *ngIf="bidExternalConfigModel.id == 0 || bidExternalConfigModel.id == null"
+                                      class="btn btn-success btn-sm float-right" type="button"
+                                      (click)="onAdd(bidExternalConfigModel)" ngbTooltip="Thêm mới">
+                                      <i class="fa fa-floppy-o"></i>
+                                    </button>
+                                    <button *ngIf="bidExternalConfigModel.id > 0"
+                                      class="btn btn-success btn-sm float-right" type="button" ngbTooltip="Lưu"
+                                      (click)="onUpdate(bidExternalConfigModel)">
+                                      <i class="fa fa-floppy-o"></i>
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="card-footer">
+            <button *ngIf="WAREHOUSE.id == 0 || WAREHOUSE.id == null" class="btn btn-primary btn-sm float-right"
+              type="button" (click)="onAdd(WAREHOUSE)" ngbTooltip="{{ 'GENERAL.Save' | translate }}">
+              <i class="fa fa-floppy-o"></i>
+            </button>
+            <button *ngIf="WAREHOUSE.id > 0" class="btn btn-primary btn-sm float-right" type="button"
+              ngbTooltip="{{ 'GENERAL.Save' | translate }}" (click)="onUpdate(WAREHOUSE)">
+              <i class="fa fa-floppy-o"></i>
+            </button>
+          </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

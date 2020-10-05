@@ -1,0 +1,15 @@
+{
+    "apiServer": {
+        "cmsApi": "http://localhost:5000/api",
+        "cdnUrl": "http://cdn.ichiba.co"
+    },
+    "sso": {
+        "authority": "https://login.ichiba.vn",
+        "clientId": "so",
+        "requireHttps": false,
+        "scope": "openid email profile om-private-api ichiba-identity-api so-private-api wh-private-api",
+        "redirectUrl": "http://localhost:4200/callback",
+        "postLogoutRedirectUri": "http://localhost:4200/signout-callback-oidc",
+        "silentRefreshUrl": "http://localhost:4200/silent-refresh.html"
+    }
+}
